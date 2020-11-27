@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+
+ --font-padrao: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+
+header {
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+select {
+    width: 300px;
+    height: 38px;
+    
+}
+
+
+label {
+    padding-bottom: 5px;
+    font-size: 20px;    
+    font-family: var(--font-padrao);
+}
+
+#fPessoas {
+    margin: 20px 0 0 26%; 
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+    width: 500px;
+    border: 2px solid;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+
+.tabela {
+    background-color: cornflowerblue;
+    height: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+
+    .tabela thead tr th {
+        padding: 5px 30px 5px 30px;
+        font-family: var(--font-padrao);
+        font-size: 20px;
+    }
+
+    .sexo{
+        text-align:center;
+    }

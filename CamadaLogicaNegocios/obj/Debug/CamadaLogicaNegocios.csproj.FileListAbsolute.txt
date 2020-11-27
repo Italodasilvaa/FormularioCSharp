@@ -1,0 +1,6 @@
+C:\Users\italo.silva\Desktop\Formulario Novo\CamadaLogicaNegocios\obj\Debug\CamadaLogicaNegocios.csprojAssemblyReference.cache
+C:\Users\italo.silva\Desktop\Formulario Novo\CamadaLogicaNegocios\obj\Debug\CamadaLogicaNegocios.csproj.CoreCompileInputs.cache
+C:\Users\italo.silva\Desktop\Formulario Novo\CamadaLogicaNegocios\bin\Debug\CamadaLogicaNegocios.dll
+C:\Users\italo.silva\Desktop\Formulario Novo\CamadaLogicaNegocios\bin\Debug\CamadaLogicaNegocios.pdb
+C:\Users\italo.silva\Desktop\Formulario Novo\CamadaLogicaNegocios\obj\Debug\CamadaLogicaNegocios.dll
+C:\Users\italo.silva\Desktop\Formulario Novo\CamadaLogicaNegocios\obj\Debug\CamadaLogicaNegocios.pdb

@@ -1,0 +1,94 @@
+﻿@model Formulario_Novo.Models.SaveViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div id="fPessoas">
+    @using (Html.BeginForm("Editar", "Home", FormMethod.Post, new { @name = "meuForm", @id = "meuForm" }))
+    {
+        @Html.HiddenFor(model => model.IdCliente)
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+
+            @Html.TextBoxFor(model => model.Nome, new { @class = "form-control", @placeholder = "Nome ", @id = "txtNome", disabled = "disabled", @readonly = "readonly" })<br />
+            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.DataNascimento, new { @class = "form-control", @placeholder = "Data de Nascimento : 00/00/0000 " , disabled = "disabled", @readonly = "readonly" })<br />
+            @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="form-group ">
+            <label class="control-label ">Qual e sua linguagem favorita ? </label>
+            <div class="col-md-12 ">
+
+                <label class="checkbox-inline">
+
+
+
+                    @for (int i = 0; i < Model.Linguagens.Count(); i++)
+                    {
+
+                        @Html.CheckBoxFor(model => model.Linguagens[i].Selected);
+                        @Model.Linguagens[i].Text;
+                        @Html.HiddenFor(model => model.Linguagens[i].Value)
+                        @Html.HiddenFor(model => model.Linguagens[i].Text)
+
+                    }
+
+
+                    @Html.ValidationMessageFor(model => model.Linguagens, "", new { @class = "text-danger" })
+
+                </label>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label ">Sexo</label>
+           
+
+            @Html.RadioButtonFor(expression: model => model.Sexo, value: "M") Masculino
+            @Html.RadioButtonFor(expression: model => model.Sexo, value: "F") Feminino
+            @Html.ValidationMessageFor(model => model.Sexo, "", new { @class = "text-danger" })
+
+
+        </div>
+
+
+
+        
+        <div class="form-group">
+
+            <div class="">
+
+                @Html.DropDownListFor(model => model.Id_estado, Model.Estados, "-- Selecione o Estado --")<br />
+                @Html.ValidationMessageFor(model => model.Estados, "", new { @class = "text-danger" })
+
+            </div>
+
+
+            <div class="form-group">
+
+                @Html.TextAreaFor(model => model.Mensagem, new { @class = "form-control required", @cols = 10, @rows = 7, @style = "resize:none", @id = "txtMensagem", @placeholder = "Digite sua Mensagem ", disabled = "disabled", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.Mensagem, "", new { @class = "text-danger" })
+
+            </div>
+
+            
+
+
+            <button class="btn btn-primary" asp-action="Index">Cancelar</button>
+
+
+
+
+
+        </div>
+    }
+</div>
+<div class="float-right"><a asp-action="Index">Voltar ao Inicio</a></div>
+<br>

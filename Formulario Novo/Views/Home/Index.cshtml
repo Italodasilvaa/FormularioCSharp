@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Formulario_Novo.Models.FormularioViewModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<script type="text/javascript">
+
+    function DeleteUsuario(idUsuario) {
+
+        var redirecionar = "/Home/Delete/" + idUsuario;
+
+
+        if (confirm("Deseja excluir esse usuario ?")) {
+
+            window.location.replace(redirecionar)
+        }
+
+
+
+    }
+</script>
+
+<div id="dGridPessoas" class="tabela table-striped ">
+
+    <table id="tbPessoas" name="tbPessoas">
+        <thead class="thead-dark">
+
+            <tr>
+                <th scope="col">@Html.DisplayNameFor(model => model.Nome)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.DataNascimento)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Linguagens)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Sexo)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Estado)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Mensagem)</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+
+
+            @foreach (var item in Model)
+            {
+
+                <tr>
+
+                    <td align="center">
+                        @Html.DisplayFor(modelItem => item.Nome, new { @id = "txtNome" })
+                    </td>
+                    <td align="center">
+                        @Html.DisplayFor(modelItem => item.DataNascimento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Linguagens)
+                    </td>
+                    <td align="center">
+                        @Html.DisplayFor(modelItem => item.Sexo)
+                    </td>
+                    <td align="center">
+                        @Html.DisplayFor(modelItem => item.Estado)
+                    </td>
+                    <td align="center">
+                        @Html.DisplayFor(modelItem => item.Mensagem)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Detalhe", "Detalhe", new { id = item.IdCliente }, new { @class = "btn btn-success" })
+                        @Html.ActionLink("Editar", "Editar", new { id = item.IdCliente }, new { @class = "btn btn-success" })
+                        <button class="btn btn-danger" onclick="DeleteUsuario(@item.IdCliente)">Excluir</button>
+                        @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+
+                    </td>
+
+                </tr>
+
+            }
+
+
+        </tbody>
+
+    </table>
+
+</div>
+<hr />
+<p><a  href="@Url.Action("Create", new { id = 0 })" class="btn btn-primary">Novo</a></p>
+
+
+
+

@@ -1,0 +1,90 @@
+﻿@model Formulario_Novo.Models.SaveViewModel
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div id="fPessoas">
+    @using (Html.BeginForm("Salvar", "Home", FormMethod.Post, new { @name = "meuForm", @id = "meuForm" }))
+    {
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.Nome, new { @class = "form-control", @placeholder = "Nome ", @id = "txtNome" })
+            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.DataNascimento, new { @class = "form-control", @placeholder = "Data de Nascimento : 00/00/0000 " })
+            @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="form-group ">
+            <label class="control-label ">Qual e sua linguagem favorita ? </label>
+            <div class="col-md-12 ">
+
+                <label class="checkbox-inline">
+
+                    @for (int i = 0; i < Model.Linguagens.Count; i++)
+                    {
+                       
+                        @Html.CheckBoxFor(model => model.Linguagens[i].Selected);
+                        @Model.Linguagens[i].Text;
+                        @Html.HiddenFor(model => model.Linguagens[i].Value)
+                        @Html.HiddenFor(model => model.Linguagens[i].Text)
+
+                    }
+
+                </label>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.Sexo, new { @class = "control-label col-md-2" })
+            <div class="">
+                <label class="radio-inline">
+                    @Html.RadioButtonFor(model => model.Sexo, "M")
+                    Masculino
+                </label>
+                <label class="radio-inline">
+                    @Html.RadioButtonFor(model => model.Sexo, "F")
+                    Feminino
+                </label>
+
+                <p>@Html.ValidationMessageFor(model => model.Sexo, "", new { @class = "text-danger" })</p>
+            </div>
+
+
+        </div>
+        <div class="form-group">
+            <div class="col-md-10 espaco">
+                @Html.DropDownListFor(model => model.Id_estado,Model.Estados, "-- Selecione o Estado --")<br />
+                @Html.ValidationMessageFor(model => model.Estados, "", new { @class = "text-danger" })
+
+
+            </div>
+
+
+            <div class="form-group">
+
+                @Html.TextAreaFor(model => model.Mensagem, new { @class = "form-control required", @cols = 10, @rows = 7, @style = "resize:none", @id = "txtMensagem", @placeholder = "Digite sua Mensagem " })<br />
+                @Html.ValidationMessageFor(model => model.Mensagem, "", new { @class = "text-danger" })
+
+
+            </div>
+
+            <input type="submit" value="Salvar" class="btn btn-primary" />
+
+            <button type="reset" class="btn btn-primary">Reset</button>
+
+        </div>
+    }
+</div>
+<div class="float-right"><a asp-action="Index">Voltar ao Inicio</a></div>
+<br>
+
+
